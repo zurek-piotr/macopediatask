@@ -1,4 +1,4 @@
-<template>
+<template v-cloak>
   <Shop />
 </template>
 
@@ -14,6 +14,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+
 *,
 *::after,
 ::before {
@@ -22,6 +24,7 @@ export default {
 }
 
 html {
+  font-family: "Roboto", sans-serif;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -44,5 +47,18 @@ button,
 
 [v-cloak] {
   display: hidden;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: $button-color;
+  font-weight: bold;
+  border-radius: 5px;
+
+  &:hover,
+  &:focus {
+    border: 2px dotted black;
+  }
 }
 </style>

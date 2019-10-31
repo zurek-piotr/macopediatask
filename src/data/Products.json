@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Margherita",
+    "price": 22,
+    "currency": "zł",
+    "count": 0,
+    "imgURL": "https://source.unsplash.com/random/100x100/?pizza,1"
+  },
+  {
+    "id": 2,
+    "name": "Prosciutto",
+    "price": 29,
+    "currency": "zł",
+    "count": 0,
+    "imgURL": "https://source.unsplash.com/random/100x100/?pizza,2"
+  },
+  {
+    "id": 3,
+    "name": "Prosciutto Funghi",
+    "price": 29,
+    "currency": "zł",
+    "count": 0,
+    "imgURL": "https://source.unsplash.com/random/100x100/?pizza,3"
+  },
+  {
+    "id": 4,
+    "name": "Pancetta",
+    "price": 29,
+    "currency": "zł",
+    "count": 0,
+    "imgURL": "https://source.unsplash.com/random/100x100/?pizza,4"
+  },
+  {
+    "id": 5,
+    "name": "Spinaci",
+    "price": 29,
+    "currency": "zł",
+    "count": 0,
+    "imgURL": "https://source.unsplash.com/random/100x100/?pizza,5"
+  },
+  {
+    "id": 6,
+    "name": "Salame Napoli",
+    "price": 29,
+    "currency": "zł",
+    "count": 0,
+    "imgURL": "https://source.unsplash.com/random/100x100/?pizza,6"
+  },
+  {
+    "id": 7,
+    "name": "Primavera",
+    "price": 33,
+    "currency": "zł",
+    "count": 0,
+    "imgURL": "https://source.unsplash.com/random/100x100/?pizza,7"
+  }
+]
