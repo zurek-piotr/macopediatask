@@ -3,12 +3,15 @@
     <h2 class="cart__header">Koszyk</h2>
     <button
       class="button button__toggleCart"
-      @click.prevent="isOpen = !isOpen"
-      :disabled="products.length === 0"
+      @click.prevent="isOpen ? toggleIsOpen(false) : toggleIsOpen(true)"
     >
       {{ isOpen && products.length > 0 ? "Ukryj koszyk" : "Rozwiń koszyk" }}
+      <div class="button__toggleCart__amount">{{ products.length }}</div>
     </button>
-    <div class="cart__products" v-show="isOpen && products.length > 0">
+    <div class="cart__products" v-show="isOpen">
+      <div class="cart__products__emptyCart" v-show="products.length < 1">
+        Twój koszyk jest pusty
+      </div>
       <div
         class="cart__products__product"
         v-for="product in products"
@@ -46,7 +49,9 @@
           {{ product.price * product.count }} {{ product.currency }}
         </div>
       </div>
-      <span class="cart__products__summary">Suma: {{ getTotalPrice() }}</span>
+      <span class="cart__products__summary" v-show="products.length > 0"
+        >Suma: {{ getTotalPrice() }}</span
+      >
     </div>
   </section>
 </template>
@@ -57,10 +62,10 @@ import store from '../store/index';
 export default {
   data() {
     return {
-      isOpen: false,
       products: store.state.cart,
     };
   },
+  props: ['isOpen'],
   methods: {
     updateProductCount(product) {
       store.commit('updateProductsCount', product);
@@ -71,6 +76,9 @@ export default {
       const currency = 'zł';
       this.products.forEach((product) => { (totalPrice) += product.count * product.price; });
       return `${totalPrice} ${currency} `;
+    },
+    toggleIsOpen(data) {
+      this.$emit('changeIsOpen', data);
     },
   },
   mounted() {
@@ -141,9 +149,17 @@ export default {
 }
 .button {
   &__toggleCart {
-    width: 150px;
+    width: 180px;
     height: 40px;
     font-size: 1em;
+
+    &__amount {
+      display: inline-block;
+      background: $primary-color;
+      border-radius: 50%;
+      width: 20px;
+      margin-left: 10px;
+    }
   }
   &__operator {
     width: 20px;

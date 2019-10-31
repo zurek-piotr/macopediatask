@@ -1,6 +1,6 @@
 <template>
   <section class="shop">
-    <Cart />
+    <Cart :isOpen.sync="isOpen" @changeIsOpen="toggleIsOpen" />
     <h2 class="shop__header">Produkty</h2>
     <select class="shop__orderBy" v-model="currentOrder">
       <option value="">Sortuj</option>
@@ -43,6 +43,7 @@ export default {
     return {
       products,
       currentOrder: '',
+      isOpen: false,
     };
   },
   computed: {
@@ -52,8 +53,12 @@ export default {
   },
   methods: {
     AddToCart(product) {
+      this.isOpen = true;
       store.commit('addProductToCart', product);
       localStorage.setItem('products', JSON.stringify(store.state.cart));
+    },
+    toggleIsOpen(data) {
+      this.isOpen = data;
     },
   },
   components: {

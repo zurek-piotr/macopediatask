@@ -1,4 +1,5 @@
 module.exports = {
+  // publicPath: '/macopediatask/',
   css: {
     loaderOptions: {
       sass: {
