@@ -29,6 +29,7 @@
             min="0"
             step="1"
             v-model.number="product.count"
+            @keypress="isInteger($event)"
             @change.prevent="updateProductCount(product)"
           /><br />
 
@@ -79,6 +80,10 @@ export default {
     },
     toggleIsOpen(data) {
       this.$emit('changeIsOpen', data);
+    },
+    isInteger(event) {
+      if (!/\d/.test(event.key)) return event.preventDefault();
+      return true;
     },
   },
   mounted() {
