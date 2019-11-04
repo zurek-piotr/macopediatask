@@ -58,6 +58,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import store from '../store/index';
 
 export default {
@@ -69,7 +70,7 @@ export default {
   props: ['isOpen'],
   methods: {
     updateProductCount(product) {
-      store.commit('updateProductsCount', product);
+      this.updateProductsCount(product);
       localStorage.setItem('products', JSON.stringify(this.products));
     },
     getTotalPrice() {
@@ -85,11 +86,12 @@ export default {
       if (!/\d/.test(event.key)) return event.preventDefault();
       return true;
     },
+    ...mapActions(['updateProductsCount']),
   },
   mounted() {
     if (localStorage.getItem('products')) {
       this.products = JSON.parse(localStorage.getItem('products'));
-      store.commit('setProductsCart', this.products);
+      store.dispatch('setProductsCart', this.products);
     }
   },
 };

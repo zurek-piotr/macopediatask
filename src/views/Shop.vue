@@ -34,9 +34,10 @@
 
 <script>
 import orderby from 'lodash.orderby';
+import { mapActions } from 'vuex';
+import store from '../store/index';
 import products from '../data/Products.json';
 import Cart from '../components/Cart.vue';
-import store from '../store/index';
 
 export default {
   data() {
@@ -54,12 +55,13 @@ export default {
   methods: {
     AddToCart(product) {
       this.isOpen = true;
-      store.commit('addProductToCart', product);
+      this.addProductToCart(product);
       localStorage.setItem('products', JSON.stringify(store.state.cart));
     },
     toggleIsOpen(data) {
       this.isOpen = data;
     },
+    ...mapActions(['addProductToCart']),
   },
   components: {
     Cart,
