@@ -32,19 +32,20 @@
             @keypress="isInteger($event)"
             @change.prevent="updateProductCount(product)"
           /><br />
-
-          <button
-            class="button button__operator"
-            @click.prevent="product.count++, updateProductCount(product)"
-          >
-            +
-          </button>
-          <button
-            class="button button__operator"
-            @click.prevent="product.count--, updateProductCount(product)"
-          >
-            -
-          </button>
+          <div class="cart__products__product__countWrapper__operatorsWrapper">
+            <button
+              class="button button__operator"
+              @click.prevent="product.count++, updateProductCount(product)"
+            >
+              +
+            </button>
+            <button
+              class="button button__operator"
+              @click.prevent="product.count--, updateProductCount(product)"
+            >
+              -
+            </button>
+          </div>
         </div>
         <div class="cart__products__product__price">
           {{ product.price * product.count }} {{ product.currency }}
@@ -107,15 +108,14 @@ export default {
   }
 
   &__products {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+    display: grid;
+    grid-row-gap: 50px;
+    margin-top: 50px;
 
     &__product {
-      display: flex;
-      flex-direction: column;
-      margin: 10px 0 30px 0;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      justify-items: center;
       align-items: center;
 
       &__picture {
@@ -140,9 +140,16 @@ export default {
         justify-content: center;
         margin: 10px 0;
 
+        &__operatorsWrapper {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 5px;
+          width: 100%;
+        }
+
         &__count {
           height: 30px;
-          width: 40px;
+          width: 80px;
           text-align: center;
           border: 1px solid black;
         }
@@ -150,7 +157,8 @@ export default {
     }
     &__summary {
       font-size: 1.2em;
-      align-self: flex-end;
+      justify-self: end;
+      font-weight: bold;
     }
   }
 }
@@ -171,23 +179,17 @@ export default {
   &__operator {
     width: 20px;
     height: 20px;
-    margin-left: 10px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .cart {
-    width: 60vw;
+    width: 90vw;
     &__products {
       &__product {
-        flex-direction: row;
-
-        &__countWrapper {
-          &__count {
-            width: 80px;
-            height: 30px;
-          }
-        }
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+        align-items: center;
       }
     }
   }
@@ -197,12 +199,12 @@ export default {
   &__operator {
     width: 30px;
     height: 30px;
-    margin: 10px 0 0 10px;
   }
 }
 
 @media screen and (min-width: 2560px) {
   .cart {
+    width: 70vw;
     &__products {
       &__product {
         &__name {
