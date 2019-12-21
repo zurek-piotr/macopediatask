@@ -1,6 +1,6 @@
-# macopediatask
+# Simple E-Commerce
 
-Task for Macopedia
+Simple e-commerce platfom which includes list of products and a cart.
 
 ### Compiles and hot-reloads for development
 
