@@ -3,13 +3,13 @@
 </template>
 
 <script>
-import Shop from './views/Shop.vue';
+import Shop from "./views/Shop.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    Shop,
-  },
+    Shop
+  }
 };
 </script>
 
